@@ -54,7 +54,7 @@ double WebImageView::loading() const {
 void WebImageView::imageLoaded() {
     // Get reply
     QNetworkReply * reply = qobject_cast<QNetworkReply*>(sender());
-
+	if(reply->url()!=mUrl) return;
     if (reply->error() == QNetworkReply::NoError) {
         if (isARedirectedUrl(reply)) {
             setURLToRedirectedUrl(reply);
